@@ -1,0 +1,142 @@
+kth largest:
+
+#include <stdio.h>
+void main() 
+{
+int number,pos_of_factor,i,c=0;
+scanf("%d",&number);
+scanf("%d",&pos_of_factor);
+for(i=number;i>=1;i--)
+{
+  if((number%i)==0)
+  c++;
+  if(c==pos_of_factor)
+  {
+  printf("%d",i);
+  break;
+  }
+}
+if(c<pos_of_factor)
+printf("1");
+}
+
+
+counting rock samples:
+
+
+#include  <stdio.h>  
+int main() {
+int a[1000],s,i,j,t,l1,l2,c=0;
+printf("Enter the number of elements : ");
+scanf("%d",&s);
+printf("Enter the number of ranges : ");
+scanf("%d",&t);
+printf("Enter the elements : ");
+for(i=0;i<s;i++)
+scanf("%d",&a[i]);
+printf("Enter the range : ");
+for(i=0;i<t;i++)
+{
+scanf("%d %d",&l1,&l2);
+for(j=0;j<s;j++) { if((a[j]>=l1)&&(a[j]<=l2))
+  c++;
+}
+printf("The desired output %d ",c);
+c=0;
+}
+return 0;
+}
+
+
+
+Collecting candies:
+
+#include <stdio.h>
+int main() 
+{
+    int i,j;
+    int num_box=0,k=0,sum=0,times=0,tst_case,temp=0;
+    long c[10000],s[10000];
+    printf("Enter the number of test case:");
+    scanf("%d",&tst_case);
+    printf("Enter the number of boxes:");
+    for(int l=0;l<tst_case;l++)
+    {
+        scanf("%d",&num_box);
+    }
+    printf("Enter the number of candies in each box:");
+    for(i=0;i<num_box;i++)
+    {
+        scanf("%ld",&c[i]);
+    }
+    for(i=0;i<num_box;i++)
+    {
+        for(j=i+1;j<num_box;j++)
+        {
+            if(c[i]>c[j])
+            {
+                temp=c[i];
+                c[i]=c[j];
+                c[j]=temp;
+            }
+        }
+    }
+    sum=0;
+    k=0;
+    for(i=0;i<num_box;i++)
+    {
+        sum=sum+c[i];
+        s[k]=sum;
+        k++;
+    }
+    times=0;
+    printf("Minimum time requried:");
+    for(i=1;i<k;i++)
+    times=times+s[i];
+    
+    printf("%d\n",times);
+    
+    return 0;
+}
+
+
+
+Philaland coins
+
+
+#include <stdio.h>
+int sum(int x[],int l)
+{
+  int j,s1=0;
+  for(j=1;j<=l;j++)
+    s1=s1+x[j];
+   return s1;
+}
+int main() {
+	int n,a[100],k=1,i,c,t,j;
+	scanf("%d",&t);
+	for(j=0;j<t;j++)
+	{
+	scanf("%d",&n);
+	a[1]=1;
+	c=0;
+	for(i=1;i<=n;i++)
+	{
+	    if(i>sum(a,k))
+	    {
+	        k++;
+	        a[i]=k;
+	    }
+	}
+	for(i=1;i<=k;i++)
+	{
+	    if(a[i]!=0)
+	    c++;
+	}
+	printf("%d\n",c);
+	for(i=1;i<=k;i++)
+	a[i]=0;
+	k=1;
+	}
+	return 0;
+}
